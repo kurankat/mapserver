@@ -1,0 +1,126 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #fbfbfb;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    margin: 0;
+    padding: 0.5em;
+}
+
+header h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+    font-size: 2.5em;
+    text-align: center;
+    margin: 0;
+}
+
+main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+content {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 0.5em 0;
+}
+
+footer {
+    padding: 1em;
+    flex: 0;
+}
+
+footer p {
+    text-align: center;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    margin: 0.5em 0;
+}
+
+p { 
+    padding-bottom: 12px; 
+    margin: 0;
+}
+
+form {
+    margin-top: 2em; 
+}
+
+input {
+    margin-left: 0.5em;
+}  
+
+li {
+    display: flex;
+    padding: 0.5em 0;
+}
+
+svg {
+    max-width: 455px;
+    border: solid #ccc 1px;
+    background-color: white;
+    padding: 0.5em;
+}
+
+svg:hover {
+    opacity: 0.75;
+    border: solid blue 1px;   
+}
+
+a {
+    border: solid, #333 2px;
+}
+
+.center {
+    text-align: center;
+}
+
+.mapform {
+    margin: 0.5em auto;
+}
+
+.form-wrapper {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.coord-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5em;
+}
+.coordinates {
+    display: flex;
+    flex-direction: column;
+}
+
+#svg-map-preview {
+    text-align: center;
+}

@@ -1,0 +1,23 @@
+        <h2 class="center">Please enter observation coordinates</h2>
+        <form class="mapform" action="/map" method="post">
+            <ul class="form-wrapper">
+                <li>
+                    <label for="taxon">Taxon:</label>
+                    <input type="text" name="taxon">
+                </li>
+                <li>
+                    <span>Map type:</span>
+                    <input type="radio" name="maptype" id="plain" value="plain" checked>
+                    <label for="plain">Plain</label>
+                    <input type="radio" name="maptype" id="grid" value="grid">
+                    <label for="grid">Grid</label>
+                    <input type="radio" name="maptype" id="web" value="web">
+                    <label for="web">Web</label>        
+                </li>
+                <li class="coordinates">             
+                    <div class="coord-header"><div>Coordinates: </div><input type="submit" value="Map"></div>                    
+                    <textarea name="coordinates" rows=20 placeholder="{{ index . "placeHolderText" }}"></textarea>
+                </li>
+            </ul>
+            
+        </form>
