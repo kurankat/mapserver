@@ -123,6 +123,7 @@ func (svm *svgMap) mapDisplay(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" { // If the request is a form submission
 		// Create a new mapData object and populate its variables from user input
 		data := newMapData(r)
+		pageTitle := "Preview map for " + data.TaxonName
 		svm.mapType = data.MapType
 		svm.mapName = strings.ReplaceAll(strings.ToLower(data.TaxonName), " ", "-") +
 			"." + svm.mapType + ".svg"
@@ -132,7 +133,7 @@ func (svm *svgMap) mapDisplay(w http.ResponseWriter, r *http.Request) {
 		// Parse the various page templates and execute them in succession to build the page html.
 		head, err := htmt.ParseFiles("assets/head.html")
 		if err == nil {
-			head.Execute(w, data)
+			head.Execute(w, pageTitle)
 		} else {
 			parsingError(err, w, "head.html")
 		}
@@ -174,7 +175,7 @@ func dataEntry(w http.ResponseWriter, r *http.Request) {
 
 		head, err := htmt.ParseFiles("assets/head.html")
 		parsingError(err, w, "head.html")
-		head.Execute(w, pageText)
+		head.Execute(w, pageText["title"])
 
 		header, err := htmt.ParseFiles("assets/header.html")
 		parsingError(err, w, "header.html")

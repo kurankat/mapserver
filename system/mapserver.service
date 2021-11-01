@@ -1,0 +1,25 @@
+[Unit]
+Description=Mapping server for Tasmanian Herbarium
+ConditionPathExists=/home/mapserver/mapserver
+After=network.target
+ 
+[Service]
+Type=simple
+User=mapserver
+Group=mapserver
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+startLimitIntervalSec=60
+
+WorkingDirectory=/home/mapserver
+ExecStart=/home/mapserver/mapserver
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+StandardOutput=file:/home/mapserver/access.log
+StandardError=file:/home/mapserver/error.log
+ 
+[Install]
+WantedBy=multi-user.target
