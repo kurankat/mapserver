@@ -14,11 +14,6 @@ import (
 	mapper "github.com/kurankat/tasmapper"
 )
 
-var dummyData string = `-42.12344,147.43321
--41.34221,145.43442
--43.22134,146.35521
--43.22133,146.35522`
-
 var accessLog log.Logger
 var errorLog log.Logger
 
@@ -51,26 +46,14 @@ func newMapData(r *http.Request) (data *mapData) {
 
 // mapSVG creates an SVG map with the data provided
 func mapSVG(data *mapData) (stringMap string) {
-	rl := new(mapper.RecordList)                                             // Create a new empty RecordList object
 	firstRecord := strings.TrimSpace(strings.Split(data.RawCoords, "\n")[0]) // Split first line to identify type of coords given
 	mapBuffer := new(bytes.Buffer)                                           // Create a new buffer to hold the map
 
 	// Regular expressions allow 0 to 10 decimal figures in the lat and
 	// Match pattern for records that contain voucher information: lat(decimal),long(decimal),voucherinfo(integer)
-	voucherPattern, _ := regexp.MatchString(`^\-?\d{2}(\.\d{0,10})?,\d{3}(\.\d{0,10})?,[01]$`, firstRecord)
+	voucherPattern, _ := regexp.MatchString(`^(-?[34][90123](\.\d{0,10})?,14[45678](\.\d{0,10})?,[av]|\-?[34][90123],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,14[5678],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,[av])$`, firstRecord)
 
-	// Match pattern for records that have only lat and long: lat(decimal),long(decimal)
-	noVoucherPattern, _ := regexp.MatchString(`^\-?\d{2}(\.\d{0,10})?,\d{3}(\.\d{0,10})?$`, firstRecord)
-
-	// Make a plain record list if there is no voucher info, or a voucher list if voucher info is available
-	if voucherPattern {
-		rl = mapper.NewVoucherRecordList(strings.NewReader(data.RawCoords), data.TaxonName)
-	} else if noVoucherPattern {
-		rl = mapper.NewRecordList(strings.NewReader(data.RawCoords), data.TaxonName)
-	} else {
-		errorLog.Println("Coordinates contain an error in the first line and cannot be interpreted", firstRecord)
-		return "I can't interpret these coordinates"
-	}
+	rl := mapper.NewRecordList(data.RawCoords, data.TaxonName)
 
 	switch data.MapType { // Select map type to draw depending on user input on page
 	case "grid": // for grid maps
@@ -102,7 +85,6 @@ func (svm *svgMap) mapAsFile(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Disposition", fileName)
 		fmt.Fprint(w, svm.svgMap)
 	}
-	return
 }
 
 // parsingError checks whether the templates can be parsed correctly and stops
@@ -157,7 +139,7 @@ func (svm *svgMap) mapDisplay(w http.ResponseWriter, r *http.Request) {
 			parsingError(err, w, "footer.html")
 		}
 	} else {
-		http.Redirect(w, r, "/", 301)
+		http.Redirect(w, r, "/", http.StatusMovedPermanently)
 	}
 }
 
