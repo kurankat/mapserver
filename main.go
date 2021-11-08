@@ -152,7 +152,7 @@ func dataEntry(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		pageText := map[string]string{
 			"title":           "Data entry form",
-			"placeHolderText": "Please enter array of coordinates, in comma-delimited format, in decimal degrees",
+			"placeHolderText": "Please enter comma-separated latitude and longitude. You can use decimal degrees or degrees, minutes, seconds.",
 		}
 
 		head, err := htmt.ParseFiles("assets/head.html")

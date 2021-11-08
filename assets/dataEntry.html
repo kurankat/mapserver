@@ -19,5 +19,26 @@
                     <textarea name="coordinates" rows=20 placeholder="{{ index . "placeHolderText" }}"></textarea>
                 </li>
             </ul>
-            
         </form>
+        <h2>Instructions</h2>
+        <p>Please enter a taxon name which will be used in the map title and the map file name.</p>
+        <p>Please select a map type.</p>
+        <p>Coordinates should be entered as comma-separated data, either in decimal degrees (two fields) or degrees, 
+            minutes and optional seconds (six fields), with the latitude first.</p>
+        <p>If omitting seconds, please use the comma that would separate them anyway, to indicate that the following field
+            is not the seconds data.</p>
+        <p>Optionally, for grid maps only, you can enter voucher status data as a final field. Use "v" or "1" to indicate that the data represents
+            a Herbarium voucher, and "a" or "0" to indicate an anecdotal record.
+        </p>
+             <h3>Examples</h3>
+             <ul>
+                 <li>Decimal degrees, no voucher status data: -42.23345,147.54432</li>
+                 <li>Decimal degrees, Herbarium record: -42.23345,147.54432,1 or -42.23345,147.54432,v</li>
+                 <li>Decimal degrees, anecdotal record: -42.23345,147.54432,0 or -42.23345,147.54432,a</li>
+                 <li>Degrees, minutes seconds, no voucher status: 42,15,23.5,147,32,43.2</li>
+                 <li>Degrees, minutes, no voucher status: 42,15,,147,32,</li>
+                 <li>DMS, Herbarium record: 42,15,23.5,147,32,43.2,1 or 42,15,23.5,147,32,43.2,v </li>
+                 <li>DMS, anecdotal record: 42,15,23.5,147,32,43.2,0 or 42,15,23.5,147,32,43.2,a </li>
+                 <li>DM, anecdotal record: 42,15,,147,32,,0 or 42,15,,147,32,,a </li>
+             </ul>
+        
