@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 html {
     overflow-y: scroll;
 }
 
 body {
+    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     background-color: #fbfbfb;
-    font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     margin: 0;
 }
@@ -23,7 +25,7 @@ header {
 }
 
 header h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;   
+    font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;   
     font-variant: small-caps;
     font-size: 3em;
     text-align: center;
@@ -56,6 +58,8 @@ footer p {
 
 h1, h2, h3 {
     margin: 0.5em 0;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 p { 
@@ -70,6 +74,10 @@ form {
 input {
     margin-left: 0.5em;
 }  
+
+textarea {
+    resize: vertical;
+}
 
 ul {
     list-style-type: disc;
@@ -138,5 +146,7 @@ a {
 .instructions {
     max-width: 650px;
     padding: 1em;
-    border: solid #666 1px;
+    border: solid #bbb 1px;
+    border-radius: 4px;
+    background-color: #fff;
 }
