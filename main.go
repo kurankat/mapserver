@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"html"
 	htmt "html/template"
 	"log"
 	"net/http"
@@ -37,9 +38,9 @@ type svgMap struct {
 func newMapData(r *http.Request) (data *mapData) {
 	data = new(mapData)
 
-	data.TaxonName = r.FormValue("taxon")
+	data.TaxonName = html.EscapeString(r.FormValue("taxon"))
 	data.MapType = r.FormValue("maptype")
-	data.RawCoords = strings.TrimSpace(strings.ReplaceAll(r.FormValue("coordinates"), " ", ""))
+	data.RawCoords = html.EscapeString(strings.TrimSpace(strings.ReplaceAll(r.FormValue("coordinates"), " ", "")))
 
 	return data
 }
