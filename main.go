@@ -46,7 +46,7 @@ func newMapData(r *http.Request) (data *mapData) {
 }
 
 // mapSVG creates an SVG map with the data provided
-func mapSVG(data *mapData) (stringMap string) {
+func mapSVG(data *mapData) string {
 	firstRecord := strings.TrimSpace(strings.Split(data.RawCoords, "\n")[0]) // Split first line to identify type of coords given
 	mapBuffer := new(bytes.Buffer)                                           // Create a new buffer to hold the map
 
@@ -55,6 +55,10 @@ func mapSVG(data *mapData) (stringMap string) {
 	voucherPattern, _ := regexp.MatchString(`^(-?[34][90123](\.\d{0,10})?,14[45678](\.\d{0,10})?,[av]|\-?[34][90123],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,14[5678],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,[av])$`, firstRecord)
 
 	rl := mapper.NewRecordList(data.RawCoords, data.TaxonName)
+
+	if rl == nil {
+		return "None of the data can be mapped"
+	}
 
 	switch data.MapType { // Select map type to draw depending on user input on page
 	case "grid": // for grid maps
