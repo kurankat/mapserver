@@ -4,6 +4,8 @@ github.com/ajstarks/deck/generate v0.0.0-20210309230005-c3f852c02e19/go.mod h1:T
 github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b h1:slYM766cy2nI3BwyRiyQj/Ud48djTMtMebDqepE95rw=
 github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b/go.mod h1:1KcenG0jGWcpt8ov532z81sp/kMMUG485J2InIOyADM=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
+github.com/kurankat/tasmapper v0.1.0-alpha h1:IwO4eCdk0K8NsPJK8zBxk0wlhxiHB2l2SgAJN3EL/0E=
+github.com/kurankat/tasmapper v0.1.0-alpha/go.mod h1:jVOXA9jKrlAbErdBBRoPJI2ciJAnfuM4UwujUfUiMg8=
 github.com/kurankat/tasutm v0.0.0-20211023051438-7b8595c4d78b h1:JMi+XvWv7+3ZwZhbIbH02BnMKr0NZyKGVPHq93dAtRA=
 github.com/kurankat/tasutm v0.0.0-20211023051438-7b8595c4d78b/go.mod h1:9tuHidmy7rnBh3WmxWcN/RKTn1ZwMFgTLUFoOgdyGjY=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
