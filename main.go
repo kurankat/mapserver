@@ -52,7 +52,7 @@ func mapSVG(data *mapData) string {
 
 	// Regular expressions allow 0 to 10 decimal figures in the lat and
 	// Match pattern for records that contain voucher information: lat(decimal),long(decimal),voucherinfo(integer)
-	voucherPattern, _ := regexp.MatchString(`^(-?[34][90123](\.\d{0,10})?,14[45678](\.\d{0,10})?,[av]|\-?[34][90123],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,14[5678],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,[av])$`, firstRecord)
+	voucherPattern, _ := regexp.MatchString(`^(-?[34][90123](\.\d{0,10})?,14[45678](\.\d{0,10})?,[av01]|\-?[34][90123],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,14[5678],([0123456])?\d,(([0123456])?\d(\.\d{1,2})?)?,[av01])$`, firstRecord)
 
 	rl := mapper.NewRecordList(data.RawCoords, data.TaxonName)
 
